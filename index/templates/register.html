@@ -1,0 +1,64 @@
+{% extends 'login.html' %}
+{% load static %}
+{% block title %}注册{% endblock %}
+{% block con %}
+{%csrf_token%}
+<div class="form-line">
+    <p style="color: #0f0f0f">用户名</p>
+    <div>
+        <input type="text" name="user" class="form-control" id="i1">
+    </div>
+</div>
+
+<div class="form-line">
+    <p style="color: #0f0f0f">密码</p>
+    <div>
+        <input type="password" name="upwd" class="form-control" placeholder="请输入6-20位号码字符" id="i2">
+    </div>
+</div>
+<div class="form-line">
+    <p style="color: #0f0f0f">确认密码</p>
+    <div>
+        <input type="password" name="cpwd" class="form-control" placeholder="请输入6-20位号码字符" id="i3">
+    </div>
+</div>
+
+<div class="form-line">
+
+    <div style="width: auto;">
+        <input style="width: 160px;margin-left: 94px" type="text" name="cpwd" class="form-control" placeholder="请输入手机验证码" id="i4">
+        <input type="button" value="发送验证码" style="margin-left: 20px;width: 120px" class="btnLogin align-center" onclick="test()" id='sendnote'>
+        <!--<button style="margin-left: 20px;width: 120px" class="btnLogin" onclick="test()" id='sendnote'>发送验证码</button>-->
+        <div id="notice" style="text-align: right"></div>
+    </div>
+
+</div>
+<div style="height:10px; margin-left: 270px;" >
+</div>
+{% endblock %}
+
+
+{% block btn %}
+<div>
+    <a href="{% url 'log'%}" class="goReg">登录</a>
+    <input type="button" value="注册" id="dd3" class="btnLogin" onclick="regist()">
+    <!--<button id="dd3" class="btnLogin" onclick="regist()">注册</button>-->
+    <!--<input type="button" value="注册" class="btnLogin" id="dd2">-->
+</div>
+{% endblock %}
+
+<!--{% block script %}-->
+    <!--<script>-->
+        <!--$(function () {-->
+            <!--$('#form').submit(function () {-->
+                <!--var uname = $('[name=user]').val();-->
+                <!--var upwd = $('[name=upwd]').val();-->
+                <!--var cpwd = $('[name=cpwd]').val();-->
+                <!--if (uname.length == 0 || upwd.length == 0 || cpwd.length == 0){-->
+                    <!--return false;-->
+                <!--}-->
+                <!--return true;-->
+            <!--})-->
+        <!--});-->
+    <!--</script>-->
+<!--{% endblock %}-->

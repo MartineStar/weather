@@ -1,0 +1,61 @@
+爬虫爬取的网站为中国天气网（www.weather.com.cn）
+
+爬虫涉及部分：
+    1.spiders文件
+        1） weatherspider
+            * 爬取全国省会城市直辖市（34个）的一天24小时的气温，湿度，风向风力，空气质量,各类型生活指数等）
+            * 数据存储到mongo
+        2） weekweatherspider
+            * 爬取全国省会城市直辖市（34个）未来七天的气温，风力风向，天气等信息
+            * 数据存储到mysql
+    2.items文件
+        包含两个类，分别作为两爬虫的容器
+    3.pipelines文件
+        处理爬取下来的item,分类存储到数据库
+    4.main文件
+        运行可执行爬虫，内有多个方式执行多个爬虫
+        1）执行os.system("执行语句")，逐个执行每个爬虫
+        2）导入模块
+            from scrapy import cmdline：只执行一次
+            from subprocess import Popen：可以执行多次
+                创建crawlall.py,在settings中添加 COMMANDS_MODULE = 'weather.commands'
+        3）导入sched模块可以定时执行多个爬虫
+
+数据库部分：
+    mysql数据库文件可由weekweather_mysql导入，mongo在程序第一次执行时直接创建
+    1）mongo
+        * 表结构
+         {   '_id' : ObjectId("5b134315d89c0e25b010735e")
+             'city': '合肥',
+             'date': '6月3日',
+             'weather': [{'11': [{'airQuality': ''},
+                                 {'humidity': '67%'},
+                                 {'temperature': '26℃'},
+                                 {'windDirection': '东北风1级'}]},
+                         {'12': [{'airQuality': '77'},
+                                 {'humidity': '74%'},
+                                 {'temperature': '24℃'},
+                                 {'windDirection': '南风1级'}]},
+                         {'13': [{'airQuality': '78'},
+                                 {'humidity': '82%'},
+                                 {'temperature': '23℃'},
+                                 {'windDirection': '西北风1级'}]},
+                          ......}
+
+    2) mysql
+        * 表结构：
+        +----------------+-------------+------+-----+---------+----------------+
+        | Field          | Type        | Null | Key | Default | Extra          |
+        +----------------+-------------+------+-----+---------+----------------+
+        | id             | int(11)     | NO   | PRI | NULL    | auto_increment |
+        | date           | char(12)    | YES  |     | NULL    |                |
+        | day            | char(10)    | YES  |     | NULL    |                |
+        | image          | varchar(70) | YES  |     | 待插入  |                |
+        | temperature    | varchar(10) | YES  |     | NULL    |                |
+        | weather        | varchar(15) | YES  |     | NULL    |                |
+        | wind_direction | varchar(20) | YES  |     | NULL    |                |
+        | city           | varchar(15) | YES  |     | NULL    |                |
+        +----------------+-------------+------+-----+---------+----------------+
+        备注：image 图片链接由于保存在本地，暂未爬下来，需后期处理
+
+

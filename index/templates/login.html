@@ -1,0 +1,61 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>{% block title %}登录{% endblock %}</title>
+	 {% csrf_token %}
+	 <link rel="stylesheet" href="/static/css/login.css">
+	 <script src="/static/js/jquery-1.11.3.js"></script>
+	<!--<script src="/static/js/login.js"></script>-->
+	<script src="/static/js/ajaxLogReg.js"></script>
+
+	 <!--<script src="{% static 'js/login.js'%}"></script>-->
+
+ </head>
+ <body background="/static/img/xiannv01.png" style="background-repeat:no-repeat;background-size:100% 100%; background-attachment: fixed;">
+
+  <div id="container">
+
+		<div id="login">
+
+			<form action="" method="post" id="form" onsubmit="check()">
+                {% csrf_token %}
+
+                <div style="margin-left: 30px;"><img src="/static/img/logo.png"></div>
+                {% block con %}
+				<div class="form-line">
+					<p style="color: #0f0f0f">用户名</p>
+					<div>
+						<input type="text" name="user" class="form-control">
+					</div>
+				</div>
+
+				<div class="form-line">
+					<p style="color: #0f0f0f">密码</p>
+					<div>
+						<input type="password" name="upwd" class="form-control" placeholder="请输入6-20位号码字符">
+					</div>
+				</div>
+                {% endblock %}
+
+				<div class="form-line" style="height: 20px; margin-left: 270px; color: red">
+					{{msg}}
+				</div>
+
+				<div class="form-line">
+					<p></p>
+                    {% block btn %}
+					<div>
+						<a href="{% url 'reg'%}" class="goReg">注册</a>
+						<input type="submit" value="登录" class="btnLogin">
+					</div>
+					<div style="margin-left: 200px; color: lawngreen">{{log}}</div>
+                    {% endblock %}
+				</div>
+			</form>
+		</div>
+	</div>
+ </body>
+ <!--{% block script %}{% endblock %}-->
+</html>

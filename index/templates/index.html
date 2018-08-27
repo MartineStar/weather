@@ -1,0 +1,588 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <title>七仙女气象</title>
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, user-scalable=0">
+		<style>
+        #one-day-box{
+            width: 80%;
+            height: 80%;
+        }
+        #half-month-box{
+            width: 80%;
+            height: 80%;
+        }
+    </style>
+    <script src="/static/js/jquery-1.11.3.js"></script>
+    <script src="/static/js/ajax_interface.js"></script>
+	<script src="/static/js/ajaxLogReg.js"></script>
+    <script src="/static/js/echarts.min.js"></script>
+        <link rel="stylesheet" href="/static/css/normalize.css">
+        <link rel="stylesheet" href="/static/css/pageloader.css">
+        <link rel="stylesheet" href="/static/fonts/opensans/stylesheet.css">
+        <link rel="stylesheet" href="/static/fonts/asap/stylesheet.css">
+        <link rel="stylesheet" href="https://cdn.bootcss.com/ionicons/1.5.2/css/ionicons.min.css">
+        <link rel="stylesheet" href="/static/css/foundation.min.css">
+        <link rel="stylesheet" href="/static/js/vendor/jquery.fullPage.css">
+        <link rel="stylesheet" href="/static/js/vegas/vegas.min.css">
+        <link rel="stylesheet" href="/static/css/main.css">
+        <link rel="stylesheet" href="/static/css/main_responsive.css">
+        <link rel="stylesheet" href="/static/css/style-font1.css">
+		<link rel="stylesheet" href="/static/css/today.css">
+		<link rel="stylesheet" href="/static/css/caidan.css">
+        <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+
+        <script src="/static/js/vendor/modernizr-2.7.1.min.js"></script>
+    </head>
+	<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+	<style>
+		#d1{
+			font-size: 60px;
+			font-family: 楷体;
+			color: white;
+		}
+	</style>
+    <body id="menu" class="alt-bg">
+
+        <div class="page-loader" id="page-loader">
+            <div><i class="ion ion-loading-d"></i><p>loading</p></div>
+        </div>
+        
+		<header class="header-top">
+			<div class="logo" style="margin-left: 60px">
+				<a href="#home">
+					<img src="/static/img/t_logo.png" alt="Logo Brand" style="padding-right: 0px;">
+					<img src="/static/img/t1_logo.png" alt="Logo Brand" style="padding-left: 5px;">
+				</a>
+			</div>
+        <div class="type1">
+            <div class="type2">
+                <div style="padding: 15px 10px">
+                    <div style="text-align: center; padding-bottom: 5px;"><button class="bit" id="dd1">ALL</button></div>
+                    <div id="d2">
+                        <span id="d3"></span>
+                        <div>按照拼音首字母查找</div>
+                    </div>
+                    <span><button class="bit01 az">A-E</button></span>
+                    <span><button class="bit02 az">F-L</button></span>
+                    <span><button class="bit03 az">M-S</button></span>
+                    <span><button class="bit04 az">T-Z</button></span>
+                </div>
+                <div class="all">
+                    <div class="show01">
+                        <div>
+                            <span class="type" ><button type="submit" name="city01" class="city c1" value="北京" onclick="get('.c1')">北京</button></span>
+                            <span class="type"><button type="submit" name="city02" class="city c2" value="成都" onclick="get('.c2')">成都</button></span>
+                            <div class="type3">
+                                <a href="#"><img src="/static/img/city/beijin.jpeg" style="padding-left: 10px" ></a>
+                                <a href="#"><img src="/static/img/city/chengdu.jpeg" style="height:160px;" ></a>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="type"><button type="submit" name="city03" class="city c3" value="重庆" onclick="get('.c3')">重庆</button></span>
+                            <span class="type"><button type="submit" name="city04" class="city c4" value="哈尔滨" onclick="get('.c4')">哈尔滨</button></span>
+                            <div style="margin: 15px 0" class="type3">
+                                <a href="#"><img src="/static/img/city/chongq.jpeg" style="width: 110px; padding:15px 0 10px 10px;"></a>
+                                <a href="#"><img src="/static/img/city/haerb.jpeg" style="padding-bottom: 6px; width: 110px;"></a>
+                            </div>
+                        </div>
+
+                        <div>
+                            <span class="type"><button type="submit" name="city05" class="city c5" value="长春" onclick="get('.c5')">长春</button></span>
+                            <span class="type"><button type="submit" name="city06" class="city c6" value="澳门" onclick="get('.c6')">澳门</button></span>
+                            <div style="margin: 15px 0" class="type3">
+                                <a href="#"><img src="/static/img/city/changchun.jpeg" style="width: 110px; padding-left: 8px;"></a>
+                                <a href="#"><img src="/static/img/city/aomen.jpeg" style="width: 110px; padding-bottom: 30px;"></a>
+                            </div>
+                       </div>
+                    </div>
+                    <div class="show02">
+                        <div>
+                            <span class="type"><button type="submit" name="city07" class="city c7" value="广州" onclick="get('.c7')">广州</button></span>
+                            <span class="type"><button type="submit" name="city08" class="city c8" value="杭州" onclick="get('.c8')">杭州</button></span>
+                            <div style="margin: 15px 0" class="type3">
+                                <a href="#"><img src="/static/img/city/11.jpeg" style="width: 110px; height:110px; padding-left: 8px;"></a>
+                                <a href="#"><img src="/static/img/city/hangzhou.jpeg" style="width: 110px;"></a>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="type"><button type="submit" name="city09" class="city c9" value="福州" onclick="get('.c9')">福州</button></span>
+                            <span class="type"><button type="submit" name="city10" class="city c10" value="昆明" onclick="get('.c10')">昆明</button></span>
+                            <div style="margin: 15px 0" class="type3">
+                                <a href="#"><img src="/static/img/city/fujian.jpeg" style="width: 110px; height:110px; padding:0 0 10px 8px;"></a>
+                                <a href="#"><img src="/static/img/city/kunming.jpeg" style="width: 110px;"></a>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="type"><button type="submit" name="city11" class="city c11" value="贵阳" onclick="get('.c11')">贵阳</button></span>
+                            <span class="type"><button type="submit" name="city12" class="city c12" value="合肥" onclick="get('.c12')">合肥</button></span>
+                            <div style="margin: 15px 0" class="type3">
+                                <a href="#"><img src="/static/img/city/guiyang.jpeg" style="width: 110px; height:110px; padding:0 0 10px 8px;"></a>
+                                <a href="#"><img src="/static/img/city/hefei.jpeg" style="width: 110px; padding-bottom: 10px"></a>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="type"><button type="submit" name="city11" class="city c13" value="兰州" onclick="get('.c13')">兰州</button></span>
+                            <span class="type"><button type="submit" name="city12" class="city c14" value="桂林" onclick="get('.c14')">桂林</button></span>
+                            <div style="margin: 15px 0" class="type3">
+                                <a href="#"><img src="/static/img/city/lanzhou.jpeg" style="width: 110px; height:110px; padding:0 0 10px 8px;"></a>
+                                <a href="#"><img src="/static/img/city/guilin.jpeg" style="width: 110px; height: 115px; padding-bottom: 10px"></a>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="type"><button type="submit" name="city11" class="city c15" value="济南" onclick="get('.c15')">济南</button></span>
+                            <span class="type"><button type="submit" name="city12" class="city c16" value="拉萨" onclick="get('.c16')">拉萨</button></span>
+                            <div style="margin: 15px 0" class="type3">
+                                <a href="#"><img src="/static/img/city/jinan.jpeg" style="width: 110px; height:110px; padding:0 0 10px 8px;"></a>
+                                <a href="#"><img src="/static/img/city/lasa.jpeg" style="width: 110px; height: 115px; padding-bottom: 10px"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="show03">
+                        <div>
+                            <span class="type"><button type="submit" name="city13" class="city c17" value="上海" onclick="get('.c17')">上海</button></span>
+                            <span class="type"><button type="submit" name="city14" class="city c18" value="深圳" onclick="get('.c18')">深圳</button></span>
+                            <div style="margin: 15px 0" class="type3">
+                                <a href="#"><img src="/static/img/city/shanghai.jpeg" style="width: 110px; height:110px; padding:0 0 10px 8px;"></a>
+                                <a href="#"><img src="/static/img/city/shenzhen.jpeg" style="width: 110px; height: 115px; padding-bottom: 10px"></a>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="type"><button type="submit" name="city17" class="city c19" value="南京" onclick="get('.c19')">南京</button></span>
+                            <span class="type"><button type="submit" name="city18" class="city c20" value="三亚" onclick="get('.c20')">三亚</button></span>
+                            <div style="margin: 15px 0" class="type3">
+                                <a href="#"><img src="/static/img/city/nanjin.jpeg" style="width: 110px; height:110px; padding:0 0 10px 8px;"></a>
+                                <a href="#"><img src="/static/img/city/sanya.jpeg" style="width: 110px; height: 115px; padding-bottom: 10px"></a>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="type"><button type="submit" name="city19" class="city c21" value="青岛" onclick="get('.c21')">青岛</button></span>
+                            <span class="type"><button type="submit" name="city20" class="city c22" value="南宁" onclick="get('.c22')">南宁</button></span>
+                            <div style="margin: 15px 0" class="type3">
+                                <a href="#"><img src="/static/img/city/qindao.jpeg" style="width: 110px; height:110px; padding:0 0 10px 8px;"></a>
+                                <a href="#"><img src="/static/img/city/nanning%20.jpeg" style="width: 110px; height: 115px; padding-bottom: 10px"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="show04">
+                        <div>
+                            <span class="type"><button type="submit" name="city23" class="city c23" value="武汉" onclick="get('.c23')">武汉</button></span>
+                            <span class="type"><button type="submit" name="city24" class="city c24" value="郑州" onclick="get('.c24')">郑州</button></span>
+                            <div style="margin: 15px 0" class="type3">
+                                <a href="#"><img src="/static/img/city/wuhan.jpeg" style="width: 110px; height:110px; padding:0 0 10px 8px;"></a>
+                                <a href="#"><img src="/static/img/city/zhengzhou.jpeg" style="width: 110px; height: 115px; padding-bottom: 10px"></a>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="type"><button type="submit" name="city25" class="city c25" value="银川" onclick="get('.c25')">银川</button></span>
+                            <span class="type"><button type="submit" name="city26" class="city c26" value="太原" onclick="get('.c26')">太原</button></span>
+                            <div style="margin: 15px 0" class="type3">
+                                <a href="#"><img src="/static/img/city/yinchan.jpeg" style="width: 110px; height:110px; padding:0 0 10px 8px;"></a>
+                                <a href="#"><img src="/static/img/city/taiyuan.jpeg" style="width: 110px; height: 115px; padding-bottom: 10px"></a>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="type"><button type="submit" name="city27" class="city c27" value="台湾" onclick="get('.c27')">台湾</button></span>
+                            <span class="type"><button type="submit" name="city28" class="city c28" value="乌鲁木齐" onclick="get('.c28')">乌鲁木齐</button></span>
+                            <div style="margin: 15px 0" class="type3">
+                                <a href="#"><img src="/static/img/city/taiwan.jpeg" style="width: 110px; height:110px; padding:0 0 10px 8px;"></a>
+                                <a href="#"><img src="/static/img/city/wulu.jpeg" style="width: 110px; height: 115px; padding-bottom: 10px"></a>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="type"><button type="submit" name="city29" class="city c29" value="西湖" onclick="get('.c29')">西湖</button></span>
+                            <span class="type"><button type="submit" name="city30" class="city c30" value="香港" onclick="get('.c30')">香港</button></span>
+                            <div style="margin: 15px 0" class="type3">
+                                <a href="#"><img src="/static/img/city/xihu.jpeg" style="width: 110px; height:110px; padding:0 0 10px 8px;"></a>
+                                <a href="#"><img src="/static/img/city/xianggang.jpeg" style="width: 110px; height: 115px; padding-bottom: 10px"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tutu">
+                            <img src="/static/img/logo.png" style="width: 200px; padding-left: 30px">
+                    </div>
+                </div>
+            </div>
+        </div>
+		</header>
+
+        <script>
+            $(".logo").mouseover(function(){
+                $(".type1").show();
+            });
+
+            $(".logo").mouseout(function(){
+                $(".type1").hide();
+            });
+            //触发关闭菜单模态页面按钮
+            // $(".close-right-meun-box").click(function(){
+            //     $(".right-meun-box").hide();
+            // });
+
+            $(".type1").mouseover(function() {
+                $(".type1").show();
+
+            });
+
+            $(".type1").mouseout(function() {
+                $(".type1").hide();
+
+            });
+
+
+
+            $(".bit01").click(function () {
+                // $(".show01").toggle()
+                $(".show01").show();
+                $(".show03").hide();
+                $(".show04").hide();
+                $(".show02").hide();
+                $("body div img").show();
+                $(".tutu").show()
+            });
+            $(".bit02").click(function () {
+                $(".show02").show();
+                $(".show03").hide();
+                $(".show04").hide();
+                $(".show01").hide();
+                $("body div img").show();
+                $(".tutu").show()
+            });
+            $(".bit03").click(function () {
+                $(".show01").hide();
+                $(".show03").show();
+                $(".show04").hide();
+                $(".show02").hide();
+                $("body div img").show();
+                $(".tutu").show()
+
+
+            });
+            $(".bit04").click(function () {
+                $(".show02").hide();
+                $(".show03").hide();
+                $(".show01").hide();
+                $('.show04').show();
+                $(".china").hide();
+                $("body div img").show();
+                $(".tutu").show()
+            });
+            $(".bit").click(function () {
+                $(".show02").show();
+                $(".show03").show();
+                $(".show01").show();
+                $('.show04').show();
+                $(".china").show();
+                $("body div>div>div>div>div>div img").hide();
+                $(".tutu").show()
+            });
+
+
+            $(document).ready(function(){
+                $('.type1').hide();
+                setTimeout(function(){
+                            $("#d1").hide();
+
+						},5000);
+					});
+        </script>
+        
+        <!-- 导航条 -->
+		<nav class="quick-link count-6 nav-left">
+			<ul id="qmenu">
+				<li data-menuanchor="home">
+					<a href="#home" class=""><i class="icon ion ion-home"></i></a>
+					<span class="title">首页</span>
+				</li>
+
+				<li data-menuanchor="when">
+					<a href="#when" class=""><i class="icon ion ion-android-alarm"></i></a>
+					<span class="title">未来24小时天气</span>
+				</li>
+				<li data-menuanchor="register">
+					<a href="#register"><i class="icon ion ion-cloud"></i></a>
+					<span class="title">最近15天天气情况</span>
+				</li>
+				<li data-menuanchor="about-us">
+					<a href="#about-us"><i class="icon ion ion-android-information"></i></a>
+					<span class="title">关于我们</span>
+				</li>
+				<li data-menuanchor="contact">
+					<a href="#contact"><i class="icon ion ion-social-reddit"></i></a>
+					<span class="title">娱乐</span>
+				</li>
+				<li data-menuanchor="contact">
+					<a href="#contact/message"><i class="icon ion ion-email"></i></a>
+					<span class="title">联系我们</span>
+				</li>
+			</ul>
+		</nav>
+
+
+        <div class="page-cover" id="home">
+            <div class="cover-bg pos-abs full-size bg-img" data-image-src="img/img05.jpg"></div>
+
+            <!-- 背景图片 -->
+            <div class="cover-bg pos-abs full-size slide-show">
+				<i class='img' data-src='/static/img/img05.jpg'></i>
+				<i class='img' data-src='/static/img/san.jpg'></i>
+				<i class='img' data-src='/static/img/pu.jpg'></i>
+				<i class='img' data-src='/static/img/guang.jpg'></i>
+			</div>
+            <div class="cover-bg pos-abs full-size bg-color" data-bgcolor="rgba(51, 2, 48, 0.12)"></div>
+        </div>
+        
+        <main class="page-main" id="mainpage">             
+			<!-- 当前时间 天气情况 页面 -->
+			<div class="section page-home page page-cent" id="s-home">
+				<!-- Logo -->
+				<div class="logo-container">
+					<!--<img class="h-logo" src="/static/img/logo_only.png" alt="Logo">-->
+				</div>
+				<!-- <div id="d1">
+					<div>七 仙 女 气 象</div>
+
+					<div>掌控 品味</div>
+				</div> -->
+
+				<script>
+
+
+
+				</script>
+
+
+				<!-- 当前时间天气情况 -->
+				<section class="content">
+					<!--
+                    	作者：ted
+                    	时间：2018-07-01
+                    	描述：当前时间 天气情况
+                    -->
+					<div id="today">
+						<div id="today-left">
+                            <span id="city">{{ city }}</span>
+							<p class="today-content-title" id="temperature">{{ temperature }}℃</p>
+							<div>
+								<p class="today-content" >相对湿度:
+                                    <span id="humidity">{{humidity}}</span>
+                                </p>
+								<p class="today-content">风向:
+                                    <span id="windDirection">{{windDireaction}}</span>
+                                </p>
+								<p class="today-content">空气质量:
+                                    <span id="airQuailty">{{air}}</span>
+                                </p>
+							</div>
+						</div>
+						<div class="today-right">
+							<p class="today-content-title">夜间</p>
+                            <p class="today-content weather22">{{weather}}</p>
+                            <p>
+                                <img src="/static/img/tq/lei.png" style="width: 128px;height:128px;" id="night-img">
+                            </p>
+							<p class="today-content" id="night">{{t1}}</p>
+						</div>
+						<div class="today-right">
+							<p class="today-content-title" >白天</p>
+                            <p class="today-content weather22" >{{weather}}</p>
+                            <p>
+                                <img src="/static/img/tq/lei.png" style="width: 128px;height:128px;" id="morning-img">
+                            </p>
+							<p class="today-content" id="sunshine">{{t2}}</p>
+						</div>
+					</div>
+				</section>
+				
+                <footer class="p-footer p-scrolldown">
+                    <a href="#when">
+                        <div class="arrow-d">
+							<div class="before"></div>
+							<div class="after">next</div>
+							<div class="circle"></div>
+						</div>
+                    </a>                        
+                </footer>
+			</div>
+            
+            <!-- 未来24小时天气情况 页面 -->
+            <div class="section page-when page page-cent" id="s-when">
+            	<!--
+                	作者：ted
+                	时间：2018-07-01
+                	描述：未来24小时天气情况 折线图
+                -->
+				<div id="one-day-box" style='margin:auto; background:black; box-sizing:border-box; height:650px; padding-top:80px; opacity:0.7;'><div id="one-day-echart" style="height: 500px;opacity:1;"></div></div>
+                <footer class="p-footer p-scrolldown">
+                    <a href="#register">
+                        <div class="arrow-d">
+							<div class="before"></div>
+							<div class="after">next</div>
+							<div class="circle"></div>
+						</div>
+                    </a>                        
+                </footer>
+            </div>
+            
+            <!-- 最近15天天气情况 -->
+            <div class="section page-register page page-cent " id="s-register">
+            	<!--
+                	作者：ted
+                	时间：2018-07-01
+                	描述：最近15天天气情况 折线图
+                -->
+				<div id="half-month-box" style='margin:auto; background:black; box-sizing:border-box; height:650px; padding-top:80px; opacity:0.7;'>
+				<div id="half-month-echart" style="height: 500px;opacity:1;"></div>
+				</div>
+                <footer class="p-footer p-scrolldown">
+                    <a href="#about-us">
+                        <div class="arrow-d">
+							<div class="before"></div>
+							<div class="after">next</div>
+							<div class="circle"></div>
+						</div>
+                    </a>                        
+                </footer>
+            </div>
+            
+            <!-- 关于我们 页面 -->
+            <div class="section page-about page page-cent" id="s-about-us">
+                <section class="content">
+                    <header class="p-title">
+                        <h3 style="font-family: 楷体;font-size: 40px;">关于我们<i class="ion ion-android-information">
+                            </i>
+                        </h3>
+						<h2>We <span class="bold">make</span> only <span class="bold">beautiful</span> things</h2>
+                    </header>
+                    <article class="text">
+                        <p>Lorem ipsum <strong>magicum </strong>dolor sit amet, consectetur adipiscing elit. Maecenas a sem ultrices neque vehicula fermentum a sit amet nulla.</p>
+                        <p>Aenean ultricies odio at erat facilisis tincidunt. Fusce tempor auctor justo, nec facilisis quam vehicula vel. Aenean non mattis purus, eget lobortis odio. </p>
+                    </article>
+                </section>
+                <footer class="p-footer p-scrolldown">
+                    <a href="#contact">
+                        <div class="arrow-d">
+							<div class="before"></div>
+							<div class="after">next</div>
+							<div class="circle"></div>
+						</div>
+                    </a>                        
+                </footer>
+            </div>
+
+
+            <div class="section page-contact page page-cent  bg-color" data-bgcolor="rgba(95, 25, 208, 0.88)s" id="s-contact">
+				<!-- 娱乐 页面  -->
+				<div class="slide" id="information" data-anchor="information">
+					<!--
+                    	作者：
+                    	时间：2018-07-01
+                    	描述：游戏/图灵机器人
+                    -->
+                    <script>
+						window.onload=function(){
+							document.getElementById('close-flash').onclick=function (){
+								document.getElementById('FlashID').style.display = 'none';
+								document.getElementById('close-flash').style.display = 'none';
+							};
+						};
+					</script>
+					<button style="float:right; position:relative; right:305.3px" id="close-flash">X</button>
+					<span>
+					<object id="FlashID" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="1280" height="768">
+						<param name="movie" value="static/swf/cf.swf">
+						<param name="quality" value="high">
+						<param name="wmode" value="opaque">
+						<param name="swfversion" value="8.0.35.0">
+						<!-- 此 param 标签提示使用 Flash Player 6.0 r65 和更高版本的用户下载最新版本的 Flash Player。如果您不想让用户看到该提示，请将其删除。 -->
+						<param name="expressinstall" value="Scripts/expressInstall.swf">
+						<!-- 下一个对象标签用于非 IE 浏览器。所以使用 IECC 将其从 IE 隐藏。 -->
+						<!--[if !IE]>-->
+						<object type="application/x-shockwave-flash" data="static/swf/cf.swf" width="1280" height="768">
+						  <!--<![endif]-->
+						  <param name="quality" value="high">
+						  <param name="wmode" value="opaque">
+						  <param name="swfversion" value="8.0.35.0">
+						  <param name="expressinstall" value="Scripts/expressInstall.swf">
+						  <!-- 浏览器将以下替代内容显示给使用 Flash Player 6.0 和更低版本的用户。 -->
+						  <div>
+							<h4>此页面上的内容需要较新版本的 Adobe Flash Player。</h4>
+							<p>< a href=" ">< img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="获取 Adobe Flash Player" width="112" height="33" /></ a></p >
+						  </div>
+						  <!--[if !IE]>-->
+						</object>
+						<!--<![endif]-->
+				  </object>
+				</span>
+				</div>
+				
+				<!-- 联系我们  页面 --> 
+				<div class="slide" id="message" data-anchor="message">
+					<section class="content">
+						<header class="p-title">
+							<h3 style="font-family: 楷体;font-size: 40px;">意见反馈<i class="ion ion-email"></i>
+							</h3>
+						</header>
+						<div class="page-block c-right v-zoomIn">
+							<div class="wrapper">
+								<div>
+									<form class="message form send_message_form" method="post" action="" id="admess">
+										<div class="fields clearfix">
+											<div class="input">
+												<label for="mes-name" style="font-family: 楷体;font-size: 25px;">用户名 </label>
+												<input id="mes-name" name="name" type="text" required></div>
+										</div>
+										<div class="fields clearfix">
+											<div class="input">
+												<label for="mes-email" style="font-family: 楷体;font-size: 25px;">邮 箱 </label>
+												<input id="mes-email" type="email" name="email" required>
+											</div>
+										</div>
+										<div class="fields clearfix no-border">
+											<label for="mes-text" style="font-family: 楷体;font-size: 25px;">意见 </label>
+                                            <textarea id="mes-text" name="message" required style="background:rgba(255,255,255,.5);"></textarea>
+										</div>
+                                        <!--<div class="fields clearfix no-border" >-->
+											<!--<input type="button" value="提交" class="button email_b" name="submit_message"-->
+												<!--style="width:50px;text-decoration: none;background-color:#5677FC;font-family: 楷体;font-size: 25px;text-align: right" id="submit-message" onclick="messagesubmit()">-->
+										<!--</div>-->
+
+
+										<div align="right">
+                                            <!--<input type="button" value="提交" class="button email_b" name="submit_message"-->
+												<!--style="font-family: 楷体;font-size: 25px;float: right" id="submit-message" onclick="messagesubmit()">-->
+											<button  class="button email_b" name="submit_message"
+												style="font-family: 楷体;font-size: 25px;" id="submit-message" onclick="messagesubmit()">提交</button>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</section>
+				</div>
+            </div>
+        </main>
+
+		
+		<footer class="page-footer">
+			<span>
+				<!-- 语音输入城市名称 -->
+                <!--<button onclick="voice()"></button>-->
+                <button onclick="voice()" style="background:rgba(0,0,0,0);outline: none" ><i id="ttt1" class="ion icon ion-mic-a" style="font-size:50px" ></i></button>
+                <!--<img id="voiceImage" style="display:none;" src='data:image/gif;base64,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' />-->
+				<!--<a href="/voice" ><i class="ion icon ion-mic-a" style="font-size:50px"></i></a>-->
+			</span>
+		</footer>
+        
+        <script src="/static/js/vendor/jquery-1.11.2.min.js"></script>
+        <script src="/static/js/vendor/all.js"></script>
+        <script src="/static/js/jquery.downCount.js"></script>
+        <script src="/static/js/form_script.js"></script>
+        <script src="/static/js/main.js"></script>
+		<script src="/static/js/oneDayEchart.js"></script>
+		<script src="/static/js/halfMonthEchart.js"></script>
+		<script src="/static/js/ajax_interface.js"></script>
+	</body>
+</html>
