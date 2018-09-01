@@ -1,4 +1,7 @@
 from django.contrib import admin
+
+# Register your models here.
+from django.contrib import admin
 from .models import *
 # Register your models here.
 
@@ -20,4 +23,3 @@ class SevenDayWeatherAdmin(admin.ModelAdmin):
 admin.site.register(User, UserAdmin)
 admin.site.register(Feedback, FeedbackAdmin)
 admin.site.register(SevenDayWeather, SevenDayWeatherAdmin)
-

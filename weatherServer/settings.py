@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'index',
+
 ]
 
 MIDDLEWARE = [
@@ -79,9 +80,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'weather',
         'USER': 'root',
-        'PASSWORD' : '12321hjz',
-        'HOST' : '127.0.0.1',
-        'PORT' : '3306',
+        'PASSWORD': '123456',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
     }
 }
 

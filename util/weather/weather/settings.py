@@ -102,7 +102,7 @@ COMMANDS_MODULE = 'weather.commands'
 MYSQL_HOST = '127.0.0.1'
 MYSQL_PORT = 3306
 MYSQL_USER = 'root'
-MYSQL_PASSWORD = '12321hjz'
+MYSQL_PASSWORD = '123456'
 MYSQL_DB = "weather"
 
 # MongoDB参数设置

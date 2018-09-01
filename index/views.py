@@ -203,3 +203,4 @@ def dataViews(request):
     # print(dataAll)
     return HttpResponse(json.dumps(dataAll, ensure_ascii=False))
 
+
